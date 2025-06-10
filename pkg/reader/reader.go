@@ -5,10 +5,13 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 // ReadFile reads of file and returns data
 func ReadFile(path string) ([]byte, error) {
+
+	path = strings.TrimSpace(path)
 
 	//Open file
 	file, err := os.Open(path)

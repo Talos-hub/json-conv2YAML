@@ -9,6 +9,7 @@ import (
 
 // JsonToYaml converte json to yaml
 func JsonToYaml(j []byte) ([]byte, error) {
+	//for json unmarshaling
 	var obj interface{}
 
 	if err := json.Unmarshal(j, &obj); err != nil {
@@ -19,7 +20,7 @@ func JsonToYaml(j []byte) ([]byte, error) {
 	dataYaml, err := conv.Marshal(obj)
 
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error marshaling to yaml: %w", err)
 	}
 
 	return dataYaml, nil
