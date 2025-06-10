@@ -2,6 +2,7 @@ package flags
 
 import (
 	"flag"
+	"fmt"
 	"os"
 )
 
@@ -19,12 +20,18 @@ func Parse() *Flag {
 	input := flag.String(FlagInput, "", DescInput)
 	output := flag.String(FlagOutput, "", DescOutput)
 	help := flag.Bool(FlagHelp, false, DescHelp)
+	vers := flag.Bool(FlagVersion, false, DescVersion)
 
 	//parsing flag of cmd
 	flag.Parse()
 
 	if *help {
 		flag.Usage()
+		os.Exit(1)
+	}
+
+	if *vers {
+		fmt.Println(version)
 		os.Exit(1)
 	}
 
