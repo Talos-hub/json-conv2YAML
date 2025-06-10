@@ -8,7 +8,11 @@ import (
 )
 
 // JsonToYaml converte json to yaml
-func JsonToYaml(j []byte) ([]byte, error) {
+func ConvertJsonToYaml(j []byte) ([]byte, error) {
+
+	if len(j) == 0 {
+		return nil, fmt.Errorf("empty JSON input")
+	}
 	//for json unmarshaling
 	var obj interface{}
 

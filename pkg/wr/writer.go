@@ -2,6 +2,7 @@ package wr
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"strings"
 )
@@ -34,8 +35,8 @@ func WriteToFile(b []byte, path string) (int, error) {
 
 // WriteToStdout write data to a file.
 // By default we write to stdout
-func WriteToDestination(b []byte) (int, error) {
-	n, err := os.Stdout.Write(b)
+func Write(b []byte, obj io.Writer) (int, error) {
+	n, err := obj.Write(b)
 
 	if err != nil {
 		return n, fmt.Errorf("error writing file: %w", err)

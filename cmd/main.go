@@ -28,13 +28,13 @@ func main() {
 	handleError(err)
 
 	//marshal
-	yamls, err := converter.JsonToYaml(data)
+	yamls, err := converter.ConvertJsonToYaml(data)
 
 	handleError(err)
 
 	//write
 	if fl.Output == "" {
-		_, err = wr.WriteToDestination(yamls)
+		_, err = wr.Write(yamls, os.Stdout)
 	} else {
 		_, err = wr.WriteToFile(yamls, fl.Output)
 	}
