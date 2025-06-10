@@ -15,8 +15,16 @@ func main() {
 	//parse falgs
 	fl := flags.Parse()
 
-	//reads data
-	data, err := reader.ReadFile(fl)
+	//data from a file
+	var data []byte
+	var err error
+
+	//reads from a file or a stdin
+	if fl.Input == "" {
+		data, err = reader.ReadFromStdin()
+	} else {
+		data, err = reader.ReadFile(fl.Input)
+	}
 
 	if err != nil {
 		fmt.Println(err)

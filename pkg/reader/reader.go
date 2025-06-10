@@ -5,31 +5,13 @@ import (
 	"fmt"
 	"io"
 	"os"
-
-	"github.com/Talos-hub/json-conv2YAML/pkg/flags"
 )
 
 // ReadFile reads of file and returns data
-func ReadFile(flag *flags.Flag) ([]byte, error) {
-
-	//by default we read data from os.Stdin
-	if flag.Input == "" {
-		fmt.Println("Type json and press Enter")
-
-		//crete reader
-		reader := bufio.NewReader(os.Stdin)
-
-		data, err := reader.ReadBytes('\n')
-
-		if err != nil {
-			return nil, fmt.Errorf("error reading os.stdin: %w", err)
-		}
-
-		return data, err
-	}
+func ReadFile(path string) ([]byte, error) {
 
 	//Open file
-	file, err := os.Open(flag.Input)
+	file, err := os.Open(path)
 
 	//catch a error
 	if err != nil {
@@ -46,6 +28,22 @@ func ReadFile(flag *flags.Flag) ([]byte, error) {
 
 	if err != nil {
 		return nil, fmt.Errorf("error reading file: %w", err)
+	}
+
+	return data, nil
+}
+
+// ReadFromStdin reads data from os.Stdin
+func ReadFromStdin() ([]byte, error) {
+	fmt.Println("Type json and press Enter")
+
+	//crete reader
+	reader := bufio.NewReader(os.Stdin)
+
+	data, err := reader.ReadBytes('\n')
+
+	if err != nil {
+		return nil, fmt.Errorf("error reading os.stdin: %w", err)
 	}
 
 	return data, nil
