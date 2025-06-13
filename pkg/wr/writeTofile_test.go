@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestWriteToFileToFile(t *testing.T) {
+func TestWriteToFile(t *testing.T) {
 
 	//arrange
 	var hello []byte = []byte("Hello")
