@@ -8,9 +8,10 @@ import (
 
 // All flags
 type Flag struct {
-	Input  string
-	Output string
-	Help   bool
+	Input   string
+	Output  string
+	Help    bool
+	Version bool
 }
 
 // Parse seting and retruning our flags
@@ -35,6 +36,6 @@ func Parse() *Flag {
 		os.Exit(1)
 	}
 
-	return &Flag{Input: *input, Output: *output, Help: *help}
+	return &Flag{Input: *input, Output: *output, Help: *help, Version: *vers}
 
 }

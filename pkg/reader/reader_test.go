@@ -6,7 +6,7 @@ import (
 )
 
 func TestReaderBytes(t *testing.T) {
-	//arrange
+	//arange
 	tempFile, err := os.CreateTemp("", "tempsfile")
 	if err != nil {
 		t.Error(err)

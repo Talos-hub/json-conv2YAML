@@ -9,7 +9,7 @@ import (
 
 func TestWriteToFile(t *testing.T) {
 
-	//arrange
+	//arange
 	var hello []byte = []byte("Hello")
 
 	nameTemp := "tempfile"
